@@ -1,0 +1,29 @@
+
+name: Release Tag
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Make Release Zip
+      uses: thedoctor0/zip-release@master
+      if: success()
+      with:
+        type: 'zip'
+        filename: 'sverchok.zip'
+        exclusions: '*.git* /.github/* /installation/* /docs/* /tests/*'
+
+    - name: Upload Release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "sverchok.zip"
+        token: ${{ secrets.GITHUB_TOKEN }}
