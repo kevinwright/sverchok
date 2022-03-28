@@ -93,7 +93,7 @@ jobs:
       with:
         type: 'zip'
         filename: 'sverchok.zip'
-        exclusions: '*.git* .github installation docs tests'
+        exclusions: '*.git* .github/* installation/* docs/* tests/*'
 
     - name: Upload Release
       uses: ncipollo/release-action@v1
