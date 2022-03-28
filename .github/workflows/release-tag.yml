@@ -5,9 +5,6 @@ on:
   push:
     tags:
       - '*'
-  create:
-    tags:
-      - '*'  
   workflow_dispatch:
 
 jobs:
