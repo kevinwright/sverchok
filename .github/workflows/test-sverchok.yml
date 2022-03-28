@@ -86,3 +86,10 @@ jobs:
         path: |
           ./tests/sverchok_tests.log
           ./tests/log_files/
+
+     - name: Tag Build
+        uses: tvdias/github-tagger@v0.0.1
+        if: success()
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          tag: build-${{ github.run_id }}-${{ github.run_number }}    
