@@ -91,6 +91,6 @@ jobs:
       uses: tvdias/github-tagger@v0.0.1
       if: success()
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ secrets.DEPLOY_KEY }}
         tag: build-${{ github.run_id }}-${{ github.run_number }}  
-          
+
