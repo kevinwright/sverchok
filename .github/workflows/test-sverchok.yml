@@ -22,11 +22,13 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
+
     - name: Cache
       uses: actions/cache@v2
       with:
         path: ./installation
         key: blender-${{ env.blender_version }}-${{ hashFiles('.github/workflows/test-sverchok.yml') }}
+
     - name: Install Blender
       run: |
         # echo "starting run"
@@ -84,3 +86,17 @@ jobs:
         path: |
           ./tests/sverchok_tests.log
           ./tests/log_files/
+
+    - name: MakeZip
+      uses: thedoctor0/zip-release@master
+      if: success()
+      with:
+        type: 'zip'
+        filename: 'sverchok.zip'
+        exclusions: '*.git* .github docs tests'
+
+    - name: Upload Release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "sverchok.zip"
+        token: ${{ secrets.GITHUB_TOKEN }}
