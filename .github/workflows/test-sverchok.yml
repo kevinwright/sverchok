@@ -18,6 +18,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+
+    - name: Confirm PWD
+      run: |
+        pwd
+        
+    - name: Make Release Zip
+      uses: thedoctor0/zip-release@master
+      if: success()
+      with:
+        type: 'zip'
+        filename: 'sverchok.zip'
+        exclusions: '*.git* .github/* installation/* docs/* tests/*'
+        
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
@@ -87,13 +101,6 @@ jobs:
           ./tests/sverchok_tests.log
           ./tests/log_files/
 
-    - name: MakeZip
-      uses: thedoctor0/zip-release@master
-      if: success()
-      with:
-        type: 'zip'
-        filename: 'sverchok.zip'
-        exclusions: '*.git* .github/* installation/* docs/* tests/*'
 
     - name: Upload Release
       uses: ncipollo/release-action@v1
