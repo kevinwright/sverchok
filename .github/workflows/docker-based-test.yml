@@ -24,6 +24,4 @@ jobs:
 
       - name: Step with docker to echo a string
         uses: 'kevinwright/sverchok-test-action@v0.0.1'
-        args: >-
-          -workdir /addon-test
-          Hello Docker !    
+ 
