@@ -23,8 +23,7 @@ jobs:
           exclusions: '*.git* /.github/* /docs/*'
 
       - name: Step with docker to echo a string
-        using: 'docker'
-        image: '.github/workflows/Dockerfile'
+        uses: 'kevinwright/sverchok-test-action'
         args: >-
           -workdir /addon-test
           Hello Docker !    
