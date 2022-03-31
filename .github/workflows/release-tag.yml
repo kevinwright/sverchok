@@ -1,0 +1,30 @@
+name: Release Tag
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    -
+      uses: actions/checkout@v2
+    -
+      name: Make Release Zip
+      run: |
+        mkdir -p /tmp/zipbuild/sverchok
+        rsync -av . /tmp/zipbuild/sverchok --exclude '.git**'
+        pushd /tmp/zipbuild
+        zip -r sverchok.zip sverchok
+        popd
+        cp /tmp/zipbuild/sverchok.zip .
+    -
+      name: Upload Release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "sverchok.zip"
+        token: ${{ secrets.GITHUB_TOKEN }}
