@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash
 
 export BLENDER_VERSION=$(blender -b --version | head -n 1 | cut -d' ' -f2 | cut -d'.' -f 1-2)
 export BLENDER_ADDON_PATH="$HOME/.config/blender/${BLENDER_VERSION}/scripts/addons"
