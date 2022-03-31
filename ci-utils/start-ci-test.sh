@@ -20,6 +20,7 @@ echo "==============="
 
 blender -b --python "$BLENDER_ADDON_PATH/sverchok/utils/testing.py" --python-exit-code 1 -- $@
 
+ls -haltr "${BLENDER_ADDON_PATH}/sverchok/tests/*.log"
 ls "${BLENDER_ADDON_PATH}/sverchok/tests/*.log"
 ls "${BLENDER_ADDON_PATH}/sverchok/tests/log_files"
 ls "tests/*.log"
