@@ -19,7 +19,7 @@ jobs:
         name: Make Release Zip
         run: |
           mkdir -p /tmp/zipbuild/sverchok
-          rsync -av . /tmp/zipbuild/sverchok --exclude '.git**' --exclude 'docs' 
+          rsync -av . /tmp/zipbuild/sverchok --exclude '.git**'
           pushd /tmp/zipbuild
           zip -r sverchok.zip sverchok
           popd
