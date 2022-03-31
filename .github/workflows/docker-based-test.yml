@@ -22,7 +22,6 @@ jobs:
           filename: 'sverchok.zip'
           exclusions: '*.git* /.github/* /docs/*'
 
-      - name: Step with docker to echo a string
+      - name: Test in Docker
         uses: docker://ghcr.io/kevinwright/sverchok-testing-image:latest
-
 
