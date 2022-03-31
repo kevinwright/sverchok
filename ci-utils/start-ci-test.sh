@@ -14,16 +14,7 @@ echo ""
 echo "Installing Addon"
 echo "================"
 
-blender -b --python ci-utils/bpy_activate_addon.py --python-exit-code 1 -- $@
-
-# echo ""
-# echo "Installing userprefs"
-# echo "===================="
-
-# mkdir -p "${BLENDER_CONFIG_PATH}"
-# ln -s ./tests/references/userpref.blend ${BLENDER_CONFIG_PATH}
-
-# we enabled it in python... this probably isn't needed
+blender -b --python /github/workspace/ci-utils/bpy_activate_addon.py --python-exit-code 1 -- $@
 
 echo ""
 echo "Launching tests"
