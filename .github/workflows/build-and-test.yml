@@ -44,9 +44,8 @@ jobs:
           path: |
             ./sverchok_tests.log
             ./log_files/      
-          - name: Tag Build
-      - 
-        name: Tag Build   
+      -
+        name: Tag Build
         uses: tvdias/github-tagger@v0.0.1
         if: success()
         with:
