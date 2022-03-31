@@ -8,13 +8,11 @@ echo "HOME = $HOME"
 echo "BLENDER_ADDON_PATH = ${BLENDER_ADDON_PATH}"
 echo "BLENDER_CONFIG_PATH = ${BLENDER_CONFIG_PATH}"
 
-cd $HOME
-
 echo ""
 echo "Installing Addon"
 echo "================"
 
-blender -b --python /github/workspace/ci-utils/bpy_activate_addon.py --python-exit-code 1 -- $@
+blender -b --python ci-utils/bpy_activate_addon.py --python-exit-code 1 -- $@
 
 echo ""
 echo "Launching tests"
