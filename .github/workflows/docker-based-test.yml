@@ -23,5 +23,5 @@ jobs:
           exclusions: '*.git* /.github/* /docs/*'
 
       - name: Step with docker to echo a string
-        uses: 'kevinwright/sverchok-test-action@v0.0.2'
+        uses: docker://ghcr.io/kevinwright/sverchok-testing-image:latest
  
