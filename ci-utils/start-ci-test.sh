@@ -22,5 +22,5 @@ blender -b --python "$BLENDER_ADDON_PATH/sverchok/utils/testing.py" --python-exi
 
 ls -haltr "${BLENDER_ADDON_PATH}/sverchok/tests"
 
-cp "${BLENDER_ADDON_PATH}/sverchok/tests/*.log" . 2>/dev/null || :
-cp -r "${BLENDER_ADDON_PATH}/sverchok/tests/log_files" . 2>/dev/null || :
+cp "${BLENDER_ADDON_PATH}/sverchok/tests/sverchok_tests.log" . || :
+cp -r "${BLENDER_ADDON_PATH}/sverchok/tests/log_files" . || :
