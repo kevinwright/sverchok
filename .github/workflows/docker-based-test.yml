@@ -35,4 +35,13 @@ jobs:
           retention-days: 5
           path: |
             ./sverchok.zip
+      -
+        name: Save logs -    
+        uses: actions/upload-artifact@v2
+        with:
+          name: log_files
+          retention-days: 5
+          path: |
+            ./sverchok_tests.log
+            ./log_files/      
 
