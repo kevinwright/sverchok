@@ -1,0 +1,54 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Sverchok Dockerised CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        uses: actions/checkout@v2
+      -
+        name: Make Release Zip
+        run: |
+          mkdir -p /tmp/zipbuild/sverchok
+          rsync -av . /tmp/zipbuild/sverchok --exclude '.git**'
+          pushd /tmp/zipbuild
+          zip -r sverchok.zip sverchok
+          popd
+          cp /tmp/zipbuild/sverchok.zip .
+      -
+        name: Test in Docker
+        uses: docker://ghcr.io/kevinwright/sverchok-testing-image:latest
+      -
+        name: Upload zip
+        uses: actions/upload-artifact@v2
+        with:
+          name: sverchok.zip
+          retention-days: 5
+          path: |
+            ./sverchok.zip
+      -
+        name: Save logs
+        uses: actions/upload-artifact@v2
+        with:
+          name: log_files
+          retention-days: 5
+          path: |
+            ./sverchok_tests.log
+            ./log_files/      
+      -
+        name: Tag Build
+        uses: tvdias/github-tagger@v0.0.1
+        if: success()
+        with:
+          repo-token: ${{ secrets.SVERCHOK_TAG_TOKEN }}
+          tag: build-${{ github.run_id }}-${{ github.run_number }}        
+
