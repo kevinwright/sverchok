@@ -77,5 +77,5 @@ htmlcov/
 utils/sv_svg_custom_server.htm
 node_scripts/SNLite_templates/local/
 
-sverchok_tests.log
+sverchok_tests*.log
 sverchok.zip

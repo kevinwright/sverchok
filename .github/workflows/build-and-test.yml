@@ -25,8 +25,15 @@ jobs:
           popd
           cp /tmp/zipbuild/sverchok.zip .
       -
-        name: Test in Docker
-        uses: docker://ghcr.io/kevinwright/sverchok-testing-image:latest
+        name: Test in Blender 2.93
+        uses: docker://ghcr.io/kevinwright/sverchok-testing-image:2.93
+        with:
+          entrypoint: /github/workspace/ci-utils/start-ci-test.sh
+      -
+        name: Test in Blender 3.0
+        uses: docker://ghcr.io/kevinwright/sverchok-testing-image:3.0
+        with:
+          entrypoint: /github/workspace/ci-utils/start-ci-test.sh
       -
         name: Upload zip
         uses: actions/upload-artifact@v2

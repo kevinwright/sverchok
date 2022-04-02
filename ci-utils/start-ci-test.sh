@@ -20,5 +20,5 @@ echo "==============="
 
 blender -b --python "$BLENDER_ADDON_PATH/sverchok/utils/testing.py" --python-exit-code 1 -- $@
 
-cp "${BLENDER_ADDON_PATH}/sverchok/tests/sverchok_tests.log" . || :
-cp -r "${BLENDER_ADDON_PATH}/sverchok/tests/log_files" . || :
+cp "${BLENDER_ADDON_PATH}/sverchok/tests/sverchok_tests.log" "./sverchok_tests_${BLENDER_VERSION}.log" || :
+cp -r "${BLENDER_ADDON_PATH}/sverchok/tests/log_files" "./log_files_${BLENDER_VERSION}" || :
