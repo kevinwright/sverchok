@@ -49,7 +49,7 @@ jobs:
           name: log_files
           retention-days: 5
           path: |
-            ./sverchok_tests.log
+            ./sverchok_tests*.log
             ./log_files/      
       -
         name: Tag Build
